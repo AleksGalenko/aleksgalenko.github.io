@@ -68,14 +68,13 @@ function loadSelectedProducts() {
                                     </td>
                                     <td class="product-name">${product.name}</td>
                                 </tr>
-                                <tr>
+                                <tr class="div-for-border">
                                     <td class="input-fields">
                                         <input type="tel" class="quantityInput" data-index="${product.id}" maxlength="5" placeholder="-">
                                         <button type="button" class="addButton" data-index="${product.id}">Add</button>
                                         <input type="text" class="totalInput" data-index="${product.id}" readonly value="0" onclick="confirmClearData('${product.id}')">
                                     </td>
                                 </tr>
-                                <div class="div-for-border"></div>
                             </table>
                         `;
                         productList.appendChild(productRow);
