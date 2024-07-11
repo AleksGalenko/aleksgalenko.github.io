@@ -64,7 +64,7 @@ button {
 } */
 
 .input-fields input[type="tel"] {
-    width: 50px; /* Adjust the physical width */
+    width: 35px; /* Adjust the physical width */
     padding: 5px 20px;
     margin-right: 5px;
     text-align: right;
@@ -73,7 +73,7 @@ button {
 }
 
 .input-fields input[type="text"] {
-    width: 75px; /* Adjust width for total field */
+    width: 65px; /* Adjust width for total field */
     padding: 5px;
     text-align: right;
     border: 2px solid black;
