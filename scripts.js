@@ -68,7 +68,7 @@ function loadSelectedProducts() {
                                     </td>
                                     <td class="product-name">${product.name}</td>
                                 </tr>
-                                <tr class="div-for-border">
+                                <tr">
                                     <td class="input-fields">
                                         <input type="tel" class="quantityInput" data-index="${product.id}" maxlength="5" placeholder="-">
                                         <button type="button" class="addButton" data-index="${product.id}">Add</button>
