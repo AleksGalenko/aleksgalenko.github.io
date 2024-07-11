@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Product Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <button class="choose-products-button" onclick="openProductModal()">Choose Products</button>
+        <div id="product-list"></div>
+        <div id="pos-navigation">
+            <button class="prevbtn" onclick="switchToPreviousPOS()">Previous POS</button>
+            <span id="pos-indicator">POS 1</span>
+            <button class="nextbtn" onclick="switchToNextPOS()">Next POS</button>
+        </div>
+        <br>
+        <hr>
+        <button class="total-button" onclick="showTotal()">Total</button>
+        <span id="total-pos-indicator">Total POS: 1</span><br>
+        <hr>
+        <button class="reset-button" onclick="confirmClearAllData()">Reset</button>
+
+    </div>
+
+    <!-- Modal for choosing products -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeProductModal()">&times;</span>
+            <h2>Select Products</h2>
+            <div id="product-selection"></div>
+            <button class="save-selection-button" onclick="saveProductSelection()">Save Selection</button>
+        </div>
+    </div>
+
+    <!-- Modal for clearing data -->
+    <div id="clear-modal" class="modal">
+        <div class="modal-content">
+            <h2>Clear Data</h2>
+            <p>Are you sure you want to clear this data?</p>
+            <button class="yesBtn" id="confirm-clear" onclick="confirmClear()">Yes</button>
+            <button class="noBtn" onclick="closeClearModal()">No</button>
+        </div>
+    </div>
+
+        <!-- Modal for clearing all data -->
+        <div id="clear-all-modal" class="modal">
+            <div class="modal-content">
+                <h2>Clear ALL Data</h2>
+                <p>Are you sure you want to clear ALL data?</p>
+                <button class="yesBtn" id="confirm-clear-all" onclick="resetAll()">Yes</button>
+                <button class="noBtn" onclick="closeClearAllModal()">No</button>
+            </div>
+        </div>
+
+    <!-- Modal for showing total -->
+    <div id="total-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeTotalModal()">&times;</span>
+            <h2>Total Counts</h2>
+            <div id="total-counts"></div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    }, error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
