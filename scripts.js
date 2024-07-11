@@ -75,9 +75,7 @@ function loadSelectedProducts() {
                                         <input type="text" class="totalInput" data-index="${product.id}" readonly value="0" onclick="confirmClearData('${product.id}')">
                                     </td>
                                 </tr>
-                                <tr>
                                 <div class="div-for-border"></div>
-                                </tr>
                             </table>
                         `;
                         productList.appendChild(productRow);
