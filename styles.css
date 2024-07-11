@@ -83,7 +83,7 @@ button {
 }
 
 .div-for-border {
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd;
 }
 
 #total, #posSelector {
