@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Product Tracker</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
         <button class="choose-products-button" onclick="openProductModal()">Choose Products</button>
@@ -18,9 +22,10 @@
         <br>
         <hr>
         <button class="total-button" onclick="showTotal()">Total</button>
-        <span id="total-pos-indicator">Total POS: 1</span><br>
+        <span id="total-pos-indicator">Total 1 POS</span><br>
         <hr>
-        <button class="reset-button" onclick="confirmClearAllData()">Reset</button>
+        <button class="reset-all-button" onclick="confirmClearAllData()">Reset All</button>
+        <button class="reset-button" onclick="confirmResetCurrentPOS()">Reset POS</button>
 
     </div>
 
@@ -34,6 +39,16 @@
         </div>
     </div>
 
+    <!-- Confirmation modal for resetting current POS -->
+    <div id="reset-current-pos-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeResetCurrentPOSModal()">&times;</span>
+            <h2>Reset data on the current POS?</h2>
+            <button class="yesBtn" onclick="resetCurrentPOS()">Yes</button>
+            <button class="noBtn" onclick="closeResetCurrentPOSModal()">No</button>
+        </div>
+    </div>
+
     <!-- Modal for clearing data -->
     <div id="clear-modal" class="modal">
         <div class="modal-content">
@@ -44,15 +59,15 @@
         </div>
     </div>
 
-        <!-- Modal for clearing all data -->
-        <div id="clear-all-modal" class="modal">
-            <div class="modal-content">
-                <h2>Clear ALL Data</h2>
-                <p>Are you sure you want to clear ALL data?</p>
-                <button class="yesBtn" id="confirm-clear-all" onclick="resetAll()">Yes</button>
-                <button class="noBtn" onclick="closeClearAllModal()">No</button>
-            </div>
+    <!-- Modal for clearing all data -->
+    <div id="clear-all-modal" class="modal">
+        <div class="modal-content">
+            <h2>Clear ALL Data</h2>
+            <p>Are you sure you want to clear ALL data?</p>
+            <button class="yesBtn" id="confirm-clear-all" onclick="resetAll()">Yes</button>
+            <button class="noBtn" onclick="closeClearAllModal()">No</button>
         </div>
+    </div>
 
     <!-- Modal for showing total -->
     <div id="total-modal" class="modal">
@@ -64,7 +79,7 @@
     </div>
 
     <script src="scripts.js"></script>
-    <script>
+    <!-- <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/service-worker.js')
@@ -75,6 +90,7 @@
                     });
             });
         }
-    </script>
+    </script> -->
 </body>
+
 </html>
