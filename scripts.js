@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   loadProducts();
   loadSelectedProducts();
   loadPOSData();
-  // updatePOSList();
   updatePOSIndicator();
 });
 
@@ -40,7 +39,7 @@ function saveProductSelection() {
   document
     .querySelectorAll('#product-selection input[type="checkbox"]:checked')
     .forEach((checkbox) => {
-      selectedProducts.push(checkbox.id); 
+      selectedProducts.push(checkbox.id);
     });
   localStorage.setItem("selectedProducts", JSON.stringify(selectedProducts));
   loadSelectedProducts();
@@ -112,24 +111,8 @@ function addPOS() {
   posIndex = posData.length - 1;
   savePOSData();
   renderPOS();
-  // updatePOSList();
   updatePOSIndicator();
 }
-
-// function updatePOSList() {
-//   const posList = document.getElementById("posList");
-//   posList.innerHTML = "";
-//   posData.forEach((_, index) => {
-//     const posButton = document.createElement("button");
-//     posButton.textContent = index + 1;
-//     posButton.addEventListener("click", () => {
-//       posIndex = index;
-//       renderPOS();
-//       updatePOSIndicator();
-//     });
-//     posList.appendChild(posButton);
-//   });
-// }
 
 document.getElementById("product-list").addEventListener("click", (event) => {
   if (event.target.classList.contains("addButton")) {
@@ -158,18 +141,17 @@ function closeResetCurrentPOSModal() {
 }
 
 function resetCurrentPOS() {
-    
-    if (posData[(posIndex)]) {
-        Object.keys(posData[posIndex]).forEach(skuId => {
-            posData[posIndex][skuId] = 0;
-        });
-        localStorage.setItem('posData', JSON.stringify(posData));
-    }
-    closeResetCurrentPOSModal();
-    loadSelectedProducts();
+  if (posData[posIndex]) {
+    Object.keys(posData[posIndex]).forEach((skuId) => {
+      posData[posIndex][skuId] = 0;
+    });
+    localStorage.setItem("posData", JSON.stringify(posData));
+  }
+  closeResetCurrentPOSModal();
+  loadSelectedProducts();
 
-    console.log(posIndex);
-    console.log(posData);
+  console.log(posIndex);
+  console.log(posData);
 }
 
 function resetAll() {
@@ -263,5 +245,7 @@ function switchToPreviousPOS() {
 function updatePOSIndicator() {
   console.log("Current POS Index:", posIndex);
   document.getElementById("pos-indicator").textContent = `POS ${posIndex + 1}`;
-  document.getElementById("total-pos-indicator").textContent = `Total ${posData.length} POS`;
+  document.getElementById(
+    "total-pos-indicator"
+  ).textContent = `Total ${posData.length} POS`;
 }
