@@ -184,3 +184,15 @@ td.product-image {
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
+
+.product-total-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #888;
+}
+
+/* .product-total-row img {
+  max-width: 30px;
+  margin-right: 10px;
+} */

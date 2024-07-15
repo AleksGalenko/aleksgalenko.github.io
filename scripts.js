@@ -7,6 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 let posData = [];
 let posIndex = 0;
+let products = [];
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('products.json')
+        .then(response => response.json())
+        .then(data => {
+            products = data;
+        });
+});
+
 
 function loadProducts() {
   fetch("products.json")
@@ -196,26 +206,56 @@ function closeClearModal() {
   document.getElementById("clear-modal").style.display = "none";
 }
 
+// function showTotal() {
+//   document.getElementById("total-modal").style.display = "block";
+//   const totalCounts = document.getElementById("total-counts");
+//   totalCounts.innerHTML = "";
+//   const selectedProducts =
+//     JSON.parse(localStorage.getItem("selectedProducts")) || [];
+//   selectedProducts.forEach((productId) => {
+//     let total = 0;
+//     posData.forEach((pos) => {
+//       if (pos[productId]) total += pos[productId].quantity;
+//     });
+//     const productTotalRow = document.createElement("div");
+//     productTotalRow.className = "product-total-row";
+//     productTotalRow.innerHTML = `
+//             <span style="color: #555">${productId}</span>
+//             <span> - </span>
+//             <span style="font-weight: bold">${total}</span>
+//             <hr>
+//         `;
+//     totalCounts.appendChild(productTotalRow);
+//   });
+// }
+
 function showTotal() {
   document.getElementById("total-modal").style.display = "block";
   const totalCounts = document.getElementById("total-counts");
   totalCounts.innerHTML = "";
-  const selectedProducts =
-    JSON.parse(localStorage.getItem("selectedProducts")) || [];
+  const selectedProducts = JSON.parse(localStorage.getItem("selectedProducts")) || [];
+  
   selectedProducts.forEach((productId) => {
-    let total = 0;
-    posData.forEach((pos) => {
-      if (pos[productId]) total += pos[productId].quantity;
-    });
-    const productTotalRow = document.createElement("div");
-    productTotalRow.className = "product-total-row";
-    productTotalRow.innerHTML = `
-            <span style="color: #555">${productId}</span>
-            <span> - </span>
-            <span style="font-weight: bold">${total}</span>
-            <hr>
-        `;
-    totalCounts.appendChild(productTotalRow);
+      let total = 0;
+      posData.forEach((pos) => {
+          if (pos[productId]) total += pos[productId].quantity;
+      });
+
+      const product = products.find(p => p.id === productId);
+      if (product) {
+          const productTotalRow = document.createElement("div");
+          productTotalRow.className = "product-total-row";
+          productTotalRow.innerHTML = `
+          
+              <img src="${product.image}" alt="${product.name}" style="max-width: 35px; margin-right: 10px;">
+              <div>
+              <span style="color: #555">${product.name}</span>
+              <span> - </span> <span>  </span>
+              <span style="font-weight: bold">${total}</span>
+              </div>
+          `;
+          totalCounts.appendChild(productTotalRow);
+      }
   });
 }
 
