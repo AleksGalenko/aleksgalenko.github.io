@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no"
-    />
+      content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Product Tracker</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="stylesheet" href="styles.css">
   </head>
 
   <body>
@@ -25,11 +24,11 @@
         <span id="pos-indicator">POS 1</span>
         <button class="nextbtn" onclick="switchToNextPOS()">Next POS</button>
       </div>
-      <br />
-      <hr />
+      <br>
+      <hr>
       <button class="total-button" onclick="showTotal()">Total</button>
-      <span id="total-pos-indicator">Total 1 POS</span><br />
-      <hr />
+      <span id="total-pos-indicator">Total 1 POS</span><br>
+      <hr>
       <button class="reset-all-button" onclick="confirmClearAllData()">
         Reset All
       </button>
@@ -54,8 +53,7 @@
     <div id="reset-current-pos-modal" class="modal">
       <div class="modal-content">
         <span class="close-button" onclick="closeResetCurrentPOSModal()"
-          >&times;</span
-        >
+          >&times;</span>
         <h2>Reset data on the current POS?</h2>
         <button class="yesBtn" onclick="resetCurrentPOS()">Yes</button>
         <button class="noBtn" onclick="closeResetCurrentPOSModal()">No</button>
